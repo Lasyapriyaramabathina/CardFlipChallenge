@@ -1,0 +1,130 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: lightblue;
+    text-align: center;
+    overflow: hidden;
+}
+
+h1 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.scoreboard {
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.game-container {
+    display: grid;
+    grid-template-columns: repeat(4, 80px);
+    gap: 10px;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.card {
+    width: 80px;
+    height: 80px;
+    background: #FFDAB9; /* Light Peach */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.card.flipped {
+    background: white;
+    color: black;
+    transform: rotateY(180deg);
+}
+
+.card.matched {
+    background: lightgreen;
+    pointer-events: none;
+}
+
+/* WIN POPUP */
+.win-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    display: none;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.win-popup h2 {
+    font-size: 2rem;
+    color: green;
+}
+
+.restart-btn {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.restart-btn:hover {
+    background-color: #45a049;
+}
+
+/* 🎆 Fireworks Animation */
+.firework {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    background: red;
+    border-radius: 50%;
+    animation: explode 1s linear infinite;
+}
+
+@keyframes explode {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(3); opacity: 0; }
+}
+
+/* 🎊 Confetti Animation */
+.confetti {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    background: randomColor();
+    animation: fall 3s linear infinite;
+}
+
+@keyframes fall {
+    0% { transform: translateY(-10px) rotate(0deg); }
+    100% { transform: translateY(100vh) rotate(360deg); }
+}
